@@ -1,0 +1,4 @@
+.footer--gray {
+    background-color: var(--gray-lighter);
+    color: var(--gray-darker)
+}
