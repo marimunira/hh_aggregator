@@ -1,0 +1,18 @@
+.header {
+    height: 60vh;
+}
+.header--centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.header--dark {
+    background-color: var(--gray-darker);
+    color: var(--color-invert);
+}
+
+.header__title--big {
+    text-transform: uppercase;
+}
