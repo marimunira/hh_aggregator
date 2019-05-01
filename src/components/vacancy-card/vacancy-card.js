@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 
-import "./vacancy-item.css"
-import { identifier } from '@babel/types';
+import "./vacancy-card.css"
 
 
-class VacancyItem extends Component {
+class VacancyCard extends Component {
     constructor(props) {
         super(props);
     }
@@ -23,4 +22,4 @@ class VacancyItem extends Component {
     }
 
 }
-export default VacancyItem;
+export default VacancyCard;
