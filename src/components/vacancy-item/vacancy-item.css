@@ -1,0 +1,18 @@
+.vacancy--card {
+    border: 2px solid var(--gray-lighter);
+    margin: 10px;
+}
+
+.vacancy__title a {
+    color: var(--black);
+    cursor: pointer;
+    text-decoration: none;
+}
+.vacancy__title a:hover {
+    color: var(--black);
+    text-decoration: underline;
+}
+
+.vacancy__tag--gray {
+    background-color: var(--gray-lightest);
+}

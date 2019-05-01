@@ -3,6 +3,7 @@
 }
 
 .header--dark {
+    background-color: #333333;
     background-color: var(--gray-darker);
     color: var(--color-invert);
 }
