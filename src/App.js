@@ -19,7 +19,7 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/" render={() =>
-          <VacancyList data={VACANCIES} />} />
+          <VacancyList data={VACANCIES.slice(0, 5)} />} />
 
         <Route exact path='/:id' render={() =>
           <Vacancy data={VACANCIES[0]} />} />

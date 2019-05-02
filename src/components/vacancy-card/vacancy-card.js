@@ -8,15 +8,16 @@ class VacancyCard extends Component {
         super(props);
     }
     render() {
-        var {id, title, company, salary, image, description, tags, date } = this.props.data;
+        var {id, description, key_skills, salary, name, published_at, employer} = this.props.data;
+
         return <article className='vacancy vacancy--card'>
-            <h2 className='vacancy__title'><a href=''>{title}</a></h2>
-            <p className='vacancy__company'>{company}</p>
-            <strong className='vacancy__salary'>{salary} р.</strong>
-            <img alt='company' src={image} width='100px' height='100px'></img>
+            <h2 className='vacancy__title'><a href=''>{name}</a></h2>
+            <p className='vacancy__company'>{employer.name}</p>
+            <strong className='vacancy__salary'>{salary.from + ' ' + salary.currency}</strong>
+            <img alt='company' src={employer.logo_urls["90"]} width='100px' height='100px'></img>
             <p className='vacancy__desc'>{description}</p>
-            {tags.map((item) =><span className='vacancy__tag vacancy__tag--gray'>{item}</span>)}
-            <time date-time='25 01 2019'>{date}</time>
+            {key_skills.map((item, index) =><span key={index} className='vacancy__tag vacancy__tag--gray'>{item.name + ' '}</span>)}
+            <time date-time='25 01 2019'>{published_at}</time>
         </article>
 
     }

@@ -8,7 +8,7 @@ import './vacancy-list.css';
 class VacancyList extends Component {
     render() {
         return <div>
-            {this.props.data.map((item)=> <VacancyCard data={item}/>)}
+            {this.props.data.map((item)=> <VacancyCard key={item.id} data={item}/>)}
             </div>
     }
 
