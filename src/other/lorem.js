@@ -1,4 +1,4 @@
-const VACANCIES = [
+const ITEMS = [
     {
       "id": "5ccaf69bb6957ab7d9c88f85",
       "description": "in consectetur et voluptate excepteur non incididunt est nisi exercitation sint sit velit consequat excepteur duis ullamco voluptate dolor ut cillum tempor laboris tempor nulla mollit mollit ut incididunt proident incididunt esse consectetur mollit incididunt fugiat exercitation ipsum ut excepteur magna duis elit ex deserunt laborum commodo exercitation aliqua excepteur",
@@ -14333,4 +14333,11 @@ const VACANCIES = [
     }
   ];
 
+const VACANCIES = {
+  "found": 100,
+  "per_page": 20,
+  "pages": 5,
+  "page": 1,
+  "items": ITEMS.slice(0, 20)
+}
   export default VACANCIES;

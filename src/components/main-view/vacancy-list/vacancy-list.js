@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import VacancyCard from '../vacancy-card/vacancy-card';
+import VacancyCard from './vacancy-card/vacancy-card';
 
 import './vacancy-list.css';
 

@@ -4,7 +4,7 @@ import Autocomplete from 'react-autocomplete';
 import "./search-form.css"
 
 
-class QueryForm extends Component {
+class SearchForm extends Component {
     constructor(props) {
         super(props);
         this.state = { value: '' };
@@ -27,10 +27,11 @@ class QueryForm extends Component {
                 onSelect={(val) => this.setState({ value: val })} //TODO Add request after 'Enter'*/
             />
 
-            <button className="query-form__submit" type="submit">Искать</button>
+            <button className="query-form__submit" type="button" onClick={()=>
+                 this.props.setQuery(this.state.value)}>Искать</button>
 
         </form>
 
     }
 }
-export default QueryForm;
+export default SearchForm;
