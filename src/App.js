@@ -14,25 +14,21 @@ import VACANCIES from './other/lorem';
 
 function App() {
 
-  return <Router>
-    <Switch>
-      <Route exact path="/" render={() =>
-        <div>
-          <Header />
-          <VacancyList data={VACANCIES}/>
-          <Footer />
-        </div>} />
+  return <div>
+    <Header />
+    <Router>
+      <Switch>
+        <Route exact path="/" render={() =>
+          <VacancyList data={VACANCIES} />} />
 
-      <Route exact path='/:id' render={() =>
-        <div>
-          <Header />
-          <Vacancy data={VACANCIES[0]}/>
-          <Footer />
-        </div>} />
+        <Route exact path='/:id' render={() =>
+          <Vacancy data={VACANCIES[0]} />} />
 
-      <Route path="*" component={ErrorPage} />
-    </Switch>
-  </Router>
+        <Route path="*" component={ErrorPage} />
+      </Switch>
+    </Router>
+    <Footer />
+  </div>
 }
 
 export default App;
