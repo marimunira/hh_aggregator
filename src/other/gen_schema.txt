@@ -1,0 +1,207 @@
+[
+  '{{repeat(5, 7)}}',
+  {
+    id: '{{objectId()}}',
+    description: '{{lorem(50, "words")}}',
+     branded_description: '{{lorem(50, "words")}}',
+    key_skills: [
+      '{{repeat(3)}}',
+      {
+        name: '{{lorem(1, "words")}}'
+      }
+   
+ ],
+    schedule:    {
+      id: '{{random("fullDay", "flexDay", "project")}}',
+      name: function(){
+        if (this.id==="fullDay")
+        	return "Полный день";
+        if (this.id==="flexDay")
+        	return "Гибкий график";
+        if (this.id==="project")
+        	return "Проектная работа";
+      }
+    },
+    accept_handicapped: '{{bool()}}',
+    accept_kids: '{{bool()}}',
+    experience: 
+    {
+      id: '{{random("newbee", "between1and3", "between3and5")}}',
+      name: function(){
+        if (this.id==="newbee")
+        	return "Начало карьеры";
+        if (this.id==="between1and3")
+        	return "1-3 года";
+        if (this.id==="between3and5")
+        	return "3-5 лет";
+      }
+    },
+    address: {
+      city:'{{city()}}',
+      street: '{{street()}}',
+      building: '{{integer(1, 100)}}',
+      description: '{{lorem(50, "words")}}',
+      lat: '{{floating(10, 50, 6)}}',
+      lng: '{{floating(10, 50, 6)}}',
+      raw:  function(){
+         return this.city + ', '+ this.street +' '+ this.building;
+      }
+    },
+    metro_stations: [
+        '{{repeat(1, 3)}}',
+      {
+        station_id: '{{random(1, 2, 3)}}',
+        station_name: function(){
+          if (this.station_id===1)
+          return "Ладожская";
+        if (this.station_id===2)
+          return "Парк Победы";
+        if (this.station_id===3)
+         return "Спортивная";
+        },
+        line_id: '{{random(5, 6, 7)}}',
+        line_name: function(){
+          if (this.line_id===5)
+        	return "Правобережная";
+        if (this.line_id===6)
+        	return "Московско-Петроградская";
+        if (this.line_id===7)
+        	return "Фрунзенско-Приморская";
+        },
+          lat: '{{floating(10, 50, 6)}}',
+          lng: '{{floating(10, 50, 6)}}'
+      }
+    ],
+     alternate_url: function(){
+      return 'https://hh.ru/vacancy/' + this.id;
+    },
+     apply_alternate_url: function(){
+      return 'https://hh.ru/applicant/vacancy_response?vacancyId=/' + this.id;
+    },
+    code: function(tags){
+      return 'HRR-' + tags.integer(500, 1000);
+    },
+     department: {
+        id: "HH-1455-TECH",
+        name: "HeadHunter::Технический департамент"
+    },
+    employment: {
+      id: '{{random("fullDay", "flexDay", "freelance")}}',
+      name: function(){
+        if (this.id==="fullDay")
+        	return "Полный день";
+        if (this.id==="flexDay")
+        	return "Гибкий график";
+        if (this.id==="freelance")
+        	return "Фриланс";
+      }
+    },
+    salary: {
+      to: '{{random("100000", "200000")}}',
+      from: '{{random("5000", "7000")}}',
+      currency: '{{random("RUR", "EUR", "USD")}}',
+      gross: '{{bool()}}'
+    },
+    archived: '{{bool()}}',
+    name: '{{random("Секретарь", "Программист", "Менеджер по продажам", "Инструктор по вождению")}}',
+   insider_interview: {
+    	id: "12345",
+        url: "https://hh.ru/interview/12345?employerId=777"
+    },
+    area:  {
+      id: '{{random(1, 2, 3)}}',
+      name: function(){
+        if (this.id===1)
+        	return "Москва";
+        if (this.id===2)
+        	return "Казань";
+        if (this.id===3)
+        	return "Санкт-Петербург";
+      },
+      url: function(){
+        return "https://api.hh.ru/areas/"+this.id;
+      }
+    },
+    created_at:  '{{date(new Date(2014, 0, 1), new Date(), "YYYY-MM-ddThh:mm:ss Z")}}',
+    published_at:  '{{date(new Date(2014, 0, 1), new Date(), "YYYY-MM-ddThh:mm:ss Z")}}',
+     employer: {
+        logo_urls: {
+            90: "https://hh.ru/employer-logo/289027.png",
+            240: "https://hh.ru/employer-logo/289169.png",
+            original: "https://hh.ru/file/2352807.png"
+        },
+        name: "HeadHunter",
+        url: "https://api.hh.ru/employers/1455",
+        alternate_url: "https://hh.ru/employer/1455",
+        id: "1455",
+        trusted: true,
+        blacklisted: false
+    },
+    response_letter_required: '{{bool()}}',
+    type: {
+      id: '{{"open", "close"}}',
+      name: function(){
+         if (this.id==="open")
+        	return "Открытая";
+        if (this.id==="close")
+        	return "Закрытая";
+      }
+    },
+     has_test: true,
+    response_url: null,
+    test: {
+        "required": false
+    },
+    specializations: [
+        '{{repeat(2)}}',
+      {
+        profarea_id: '{{random(4, 5, 6)}}',
+        profarea_name:  function(){
+         if (this.profarea_id===4)
+        	return "Административный персонал";
+        if (this.profarea_id===5)
+        	return "Программирование";
+        if (this.profarea_id===6)
+          return "Транспорт";
+      },
+        id: function(tags){
+          var ex = [100, 200, 300];
+          return this.profarea_id + '.' + ex[tags.integer(0, ex.length-1)];
+        },
+        name: function(){
+          if (this.id.slice(2, 5)==="100")
+            return "Мелкий персонал";
+          if (this.id.slice(2, 5)==="200")
+            return "Средний служащий";
+          if (this.id.slice(2, 5)==="300")
+            return "Делопроизводство";
+        }
+      }
+      ],
+     contacts: {
+      name: '{{firstName()}} {{surname()}}',
+      email: '{{email()}}',
+      phones: [
+         {
+                country: "7",
+                city: "985",
+                number: "000-00-00",
+                comment: null
+            }
+      ]
+    },
+     billing_type: {
+        "id": "standard",
+        "name": "Стандарт"
+    },
+    allow_messages: '{{bool()}}',
+    premium: '{{bool()}}',
+    driver_license_types: ['{{repeat(0,2)}}',
+      {id:'{{random("A", "B", "C", "D")}}'}
+     ],
+    accept_incomplete_resumes: '{{bool()}}'
+  
+    
+  }
+  
+]
