@@ -1,3 +1,4 @@
+import { COUNT_PER_PAGE } from './constants';
 const ITEMS = [
     {
       "id": "5ccaf69bb6957ab7d9c88f85",
@@ -14334,8 +14335,8 @@ const ITEMS = [
   ];
 
 const VACANCIES = {
-  "found": 100,
-  "per_page": 20,
+  "found": ITEMS.length,
+  "per_page": COUNT_PER_PAGE,
   "pages": 5,
   "page": 1,
   "items": ITEMS.slice(0, 20)
