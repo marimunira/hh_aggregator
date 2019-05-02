@@ -1,3 +1,5 @@
+import {COUNT_PER_PAGE} from './constants';
+
 const getQueryString = function (query, data, page) {
     var { area, profarea, experience } = data;
     var result = '?text=' + query;
@@ -8,7 +10,7 @@ const getQueryString = function (query, data, page) {
     if (profarea)
         result += '&specialization=' + profarea.map(item=>item.value).join(',');
     result += '&order_by=publication_time';
-    result += '&page=' + page + '&per_page=20';
+    result += '&page=' + page + '&per_page=' + COUNT_PER_PAGE;
     return result;
 }
 
