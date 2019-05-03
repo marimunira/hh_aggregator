@@ -16,8 +16,8 @@ class App extends Component {
 
   render() {
     return <div>
-      <Header />
       <Router>
+        <Header />
         <Switch>
           <Route exact path="/" component={MainView} />
 
@@ -25,8 +25,8 @@ class App extends Component {
 
           <Route path="*" component={ErrorPage} />
         </Switch>
+        <Footer />
       </Router>
-      <Footer />
     </div>
   }
 }

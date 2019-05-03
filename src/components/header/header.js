@@ -1,12 +1,16 @@
-import React, { Component } from 'react';
+import React  from 'react';
+
+import { Link } from 'react-router-dom';
 
 import "./header.css"
 
 
 function Header() {
-    return <header className='header header--dark centered'>
-        <h1 className="header__title header__title--big">Последние вакансии</h1>
-        <p>Подбор вакансий идёт с сайта <a href='https://hh.ru/'>hh.ru</a>.</p>
+    return <header className='page-header'>
+        <div className='page-header__inner'>
+            <h1 className="page-header__title page-header__title--nolink"><Link to='/'>Последние вакансии</Link></h1>
+            <span>Подбор вакансий идёт с сайта <a href='https://hh.ru/'>hh.ru</a>.</span>
+        </div>
     </header>
 
 }
