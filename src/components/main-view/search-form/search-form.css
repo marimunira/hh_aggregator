@@ -3,8 +3,11 @@
    align-content: stretch;
 }
 .search-form__input {
-    height: 20px;
+    height: 35px;
     padding-left: 5px;
+    border-radius: 5px;
+    font-size: var(--font-size-h4);
+    border: 1px solid var(--gray-lighter);
 }
 
 .search-form > div {
