@@ -23,7 +23,7 @@ class SearchForm extends Component {
                 }
                 renderInput={(props) => 
                         <div className="search_form__wrapper">
-                            <input id="search" className="search-form__input" {...props} />
+                            <input id="search" className="search-form__input" {...props} placeholder='Что ищем?'/>
                         </div>}
                 value={this.state.value}
                 onChange={(e) => this.setState({ value: e.target.value })}

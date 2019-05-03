@@ -7,8 +7,10 @@
 }
 
 .search-form > div {
-   flex-grow: 1; 
+   flex-grow: 1;
+   z-index: 100;
 }
+
 .search_form__wrapper {
     margin-right: 15px;
     
