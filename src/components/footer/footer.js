@@ -5,7 +5,7 @@ import "./footer.css"
 
 function Footer() {
     return <footer className='footer'>
-        <div class="footer__inner">
+        <div className="footer__inner">
             <p>Последние вакансии &copy; 2019</p>
         </div>
     </footer>
