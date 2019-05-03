@@ -4,8 +4,10 @@ import "./footer.css"
 
 
 function Footer() {
-    return <footer className='footer footer--gray centered'>
-        <p>Последние вакансии &copy; 2019</p>
+    return <footer className='footer'>
+        <div class="footer__inner">
+            <p>Последние вакансии &copy; 2019</p>
+        </div>
     </footer>
 
 }

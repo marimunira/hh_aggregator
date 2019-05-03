@@ -1,4 +1,10 @@
-.footer--gray {
+.footer {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
     background-color: var(--gray-lighter);
     color: var(--gray-darker)
+}
+.footer__inner {
+    padding: auto 20px;
 }
