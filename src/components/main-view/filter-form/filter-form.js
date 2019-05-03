@@ -5,6 +5,33 @@ import AsyncSelect from 'react-select/lib/Async';
 import { getAreaSuggestions, getSkillSuggestions, EXPERIENCE } from '../../../services/services';
 import "./filter-form.css";
 
+const styles = {
+    option: styles => ({ ...styles, cursor: 'pointer' }),
+    control: styles => ({ ...styles, cursor: 'text' }),
+    multiValueRemove: (styles, isSelected) => { 
+       // var hoverColor = isSelected ? 'var(--color-accent)' : 'white'
+        return  {...styles, cursor: 'pointer'/*, backgroundColor: hoverColor*/} 
+    },
+    indicatorsContainer: styles => ({ ...styles, cursor: 'pointer' })
+    /*option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+      const color = chroma(data.color);
+      return {
+        ...styles,
+        backgroundColor: isDisabled
+          ? null
+          : isSelected ? data.color : isFocused ? color.alpha(0.1).css() : null,
+        color: isDisabled
+          ? '#ccc'
+          : isSelected
+            ? chroma.contrast(color, 'white') > 2 ? 'white' : 'black'
+            : data.color,
+        cursor: isDisabled ? 'not-allowed' : 'default',
+      };
+    },
+    input: styles => ({ ...styles, cursor: 'pointer' }),
+    placeholder: styles => ({ ...styles, ...dot() }),
+    singleValue: (styles, { data }) => ({ ...styles, ...dot(data.color) }),*/
+  };
 
 class FilterForm extends Component {
     constructor() {
@@ -46,6 +73,9 @@ class FilterForm extends Component {
             skills: null
         });
     }
+
+
+
     render() {
         console.log(this.state);
         return <form className="filter-form">
@@ -59,6 +89,7 @@ class FilterForm extends Component {
                     loadOptions={getAreaSuggestions}
                     noOptionsMessage={() => '...'}
                     loadingMessage={() => '...'}
+                    styles={styles}
                 />
             </div>
             <div className="filter-form__item">
@@ -71,6 +102,7 @@ class FilterForm extends Component {
                     loadOptions={getSkillSuggestions}
                     noOptionsMessage={() => '...'}
                     loadingMessage={() => '...'}
+                    styles={styles}
                 />
             </div>
             <div className="filter-form__item">
@@ -80,6 +112,7 @@ class FilterForm extends Component {
                     onChange={this.handleChangeExperience}
                     placeholder='Более 6 лет'
                     options={EXPERIENCE}
+                    styles={styles}
                 />
             </div>
             <div className="filter-form__buttons">

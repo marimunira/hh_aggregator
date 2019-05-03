@@ -4,6 +4,7 @@
 }
 .search-form__input {
     height: 20px;
+    padding-left: 5px;
 }
 
 .search-form > div {
