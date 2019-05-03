@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
+import AsyncSelect from 'react-select/lib/Async';
 
+import { getAreaSuggestions, getSkillSuggestions, EXPERIENCE } from '../../../services/services';
 import "./filter-form.css";
 
-import AREAS from '../../../other/lorem_areas';
-import PROFAREAS from '../../../other/lorem_profareas';
-import EXPERIENCE from '../../../other/lorem_experience';
 
 class FilterForm extends Component {
     constructor() {
@@ -13,48 +12,49 @@ class FilterForm extends Component {
         this.state = {
             area: [],
             experience: null,
-            profarea: []
+            skills: []
         };
     }
 
     handleChangeCity = (selectedOption) => {
+        console.log(this.state.area);
         this.setState({ area: selectedOption,
             experience: this.state.experience,
-            profarea: this.state.profarea});
+            skills: this.state.skills});
     }
     handleChangeExperience = (selectedOption) => {
         this.setState({ area:  this.state.area,
             experience: selectedOption,
-            profarea: this.state.profarea});
+            skills: this.state.skills});
     }
-    handleChangeProfarea = (selectedOption) => {
+    handleChangeSkills = (selectedOption) => {
         this.setState({ area: this.state.area,
             experience: this.state.experience,
-            profarea: selectedOption});
+            skills: selectedOption});
     }
 
     resetFilters = () => {
         this.setState({ area: [],
             experience: null,
-            profarea:[]});
+            skills:[]});
     }
     render() {
         console.log(this.state);
         return <form className="filter-form">
             <label>Город:</label>
-            <Select
+            <AsyncSelect
                 value={this.state.area}
                 isMulti
                 onChange={this.handleChangeCity}
-                options={AREAS}
+                loadOptions={getAreaSuggestions}
             />
 
-            <label>Отрасль:</label>
-            <Select
-                value={this.state.profarea}
+            <label>Ключевые навыки:</label>
+            <AsyncSelect
+                value={this.state.skills}
                 isMulti
-                onChange={this.handleChangeProfarea}
-                options={PROFAREAS}
+                onChange={this.handleChangeSkills}
+                loadOptions={getSkillSuggestions}
             />
             <label>Опыт работы:</label>
             <Select
