@@ -1,9 +1,10 @@
 .vacancy-list__pagination {
     list-style-type: none;
+    padding: 0;
     display: flex;
+    justify-content: center;
 }
 .vacancy-list__pagination-item {
-    /*display: inline-block;*/
     border: 1px solid var(--gray-darken);
     height: 30px;
     display: flex;

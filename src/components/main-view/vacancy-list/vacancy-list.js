@@ -36,6 +36,8 @@ class VacancyList extends Component {
                 linkClass='vacancy-list__pagination-link'
                 activeClass='vacancy-list__pagination-item--active'
                 disabledClass='vacancy-list__pagination-item--disabled'
+                hideDisabled
+                hideFirstLastPages
       />
             </div>
             else return <div>Нет результатов</div>
