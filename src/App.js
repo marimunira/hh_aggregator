@@ -9,7 +9,7 @@ import Vacancy from './components/vacancy/vacancy';
 import ErrorPage from './components/error-page/error-page';
 
 import PrivateRoute from './other/private-route';
-
+import { checkVacancyById } from './services/services';
 import './App.css';
 import './variables.css';
 
@@ -19,21 +19,14 @@ import JOBS from './other/lorem_jobs';
 
 class App extends Component {
 
-  checkVacancyId(_id) {
-    return new Promise(function(resolve, reject) {
-      var hasVacancy = VACANCIES.items.map(item => item.id).indexOf(_id) != -1;
-      resolve(hasVacancy);
-    })
-  }
   render() {
     return <div>
       <Header />
       <Router>
         <Switch>
-          <Route exact path="/" render={() => <MainView />} />
+          <Route exact path="/" component={MainView} />
 
-          <PrivateRoute validator={this.checkVacancyId} path='/:id' render={(urlProps) =>
-            <Vacancy data={VACANCIES.items.filter(item => item.id===urlProps.match.params.id)[0]} />} />
+          <PrivateRoute exact validator={checkVacancyById} path='/:id' component={Vacancy} />} />
 
           <Route path="*" component={ErrorPage} />
         </Switch>

@@ -26,6 +26,14 @@ const getQueryString = function (keyWords, filters, page) {
 
 export const getVacancyById = (id) => {
     return fetch(ENDPOINT + '/vacancies/' + id)
+        .then(res => res.json())
+       // .then(res => console.log(res))
+}
+
+export const checkVacancyById = (id) => {
+    return fetch(ENDPOINT + '/vacancies/' + id)
+    //.then(res => console.log(res))
+    .then(res => res.ok);
 }
 
 export const getVacancies = (params) => {
