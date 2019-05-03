@@ -9,7 +9,6 @@ class PrivateRoute extends Component {
   }
 
   async componentDidMount() {
-      console.log('componentDidMount');
     if (this.props.validator) {
       this.setState({
         validated: await this.props.validator(this.props.computedMatch.params.id)
