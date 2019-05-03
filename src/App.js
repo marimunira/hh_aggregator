@@ -10,8 +10,7 @@ import ErrorPage from './components/error-page/error-page';
 
 import PrivateRoute from './other/private-route';
 import { checkVacancyById } from './services/services';
-import './App.css';
-import './variables.css';
+
 
 class App extends Component {
 
