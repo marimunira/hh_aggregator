@@ -1,5 +1,6 @@
 .main-content {
     padding: 20px 30px;
+    min-height: 90vh;
 }
 .filter-form-wrapper, .vacancy-list-wrapper {
     margin-top: 20px;
