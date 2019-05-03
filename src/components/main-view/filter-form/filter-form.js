@@ -10,9 +10,9 @@ class FilterForm extends Component {
     constructor() {
         super();
         this.state = {
-            area: [],
+            area: null,
             experience: null,
-            skills: []
+            skills: null
         };
     }
 
@@ -34,9 +34,9 @@ class FilterForm extends Component {
     }
 
     resetFilters = () => {
-        this.setState({ area: [],
+        this.setState({ area: null,
             experience: null,
-            skills:[]});
+            skills:null});
     }
     render() {
         console.log(this.state);

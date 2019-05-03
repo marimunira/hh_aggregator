@@ -8,14 +8,15 @@ const options = {
 };
 
 
-const getQueryString = function (keyWords, data, page) {
-    var { area, skills, experience } = data;
+const getQueryString = function (keyWords, filters, page) {
+    var { area, skills, experience } = filters;
+    console.log(filters);
     var result = '?text=' + keyWords;
-    if (skills)
-        result += ',' + skills.map(item => item.value).join(',');
+    if (skills && skills.length!==0)
+        result += ',' + skills.map(item => item.label).join(',');
     if (experience)
         result += '&experience=' + experience.value;
-    if (area)
+    if (area && area.length!==0)
         result += '&area=' + area.map(item => item.value).join(',');
     result += '&order_by=publication_time';
     result += '&page=' + page + '&per_page=' + COUNT_PER_PAGE;
@@ -28,7 +29,7 @@ export const getVacancyById = (id) => {
 }
 
 export const getVacancies = (params) => {
-    const query = getQueryString(...params);
+    const query = getQueryString(params.keyWords, params.filters, params.page);
     return fetch(ENDPOINT + '/vacancies' + query)
         .then(res => res.json())
 

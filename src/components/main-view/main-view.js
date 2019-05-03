@@ -4,51 +4,73 @@ import SearchForm from './search-form/search-form';
 import FilterForm from './filter-form/filter-form';
 import VacancyList from './vacancy-list/vacancy-list';
 
-import VACANCIES from '../../other/lorem';
 import JOBS from '../../other/lorem_jobs';
 
-import { getAreas } from '../../services/services';
+import { getVacancies } from '../../services/services';
 
 class MainView extends Component {
     constructor() {
         super();
-        this.state = { query: '', city: '', skills: [], experience: [] };
+        this.state = { query: '', area: null, skills: null, experience: null, data: null, page: 0 };
         this.setQuery = this.setQuery.bind(this);
-        this.setFilters= this.setFilters.bind(this);
+        this.setFilters = this.setFilters.bind(this);
     }
     setQuery(value) {
         this.setState({
             query: value,
-            city: this.state.city,
-            skills: this.state.skills,
-            experience: this.state.experience
+            city: null,
+            skills: null,
+            experience: null,
+            data: this.state.data,
+            page: 0
         })
     }
 
     setFilters(data) {
-        var {city, skills, experience} = data;
+        var { area, skills, experience } = data;
         this.setState({
             query: this.state.query,
-            city: city,
+            area: area,
             skills: skills,
-            experience: experience
+            experience: experience,
+            data: this.state.data,
+            page: 0
         })
     }
 
-    componentDidMount() {
-           //fetch('https://api.hh.ru/vacancies?text=%D0%9F%D1%80%D0%BE%D0%B4%D0%B0%D0%B2%D0%B5%D1%86&area=2')
-           fetch('https://api.hh.ru/suggests/vacancy_search_keyword?text=Про')
-           .then(res => res.json())
-            .then(res => {
-                console.log(res);
-            })
+
+    componentDidUpdate(_, prevState) {
+        var p = (prevState.page !== this.state.page) ? this.state.page : 0;
+        if (prevState.query != this.state.query
+            || prevState.skills != this.state.skills
+            || prevState.area != this.state.area
+            || prevState.experience != this.state.experience) {
+            var options = {
+                keyWords: this.state.query,
+                filters: {
+                    area: this.state.area,
+                    skills: this.state.skills,
+                    experience: this.state.experience
+                },
+                page: p
+            }
+            getVacancies(options)
+                .then(res =>
+                    this.setState({
+                        keyWords: this.state.keyWords,
+                        area: this.state.area,
+                        skills: this.state.skills,
+                        experience: this.state.experience,
+                        data: res,
+                        page: p
+                    }));
+        }
     }
     render() {
-        //console.log(this.state);
         return <div>
             <SearchForm data={JOBS} setQuery={this.setQuery} />
-            <FilterForm setFilters={this.setFilters}/>
-            <VacancyList data={VACANCIES.items.slice(0, 5)} />
+            <FilterForm setFilters={this.setFilters} />
+            <VacancyList data={this.state.data} />
         </div>
     }
 }

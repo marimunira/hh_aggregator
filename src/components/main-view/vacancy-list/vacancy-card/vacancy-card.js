@@ -11,6 +11,10 @@ class VacancyCard extends Component {
         var {id, description, key_skills, salary, name, published_at, employer} = this.props.data;
 
         return <article className='vacancy vacancy--card'>
+        <h2 className='vacancy__title'><a href=''>{name}</a></h2>
+        <time date-time='25 01 2019'>{published_at}</time>
+    </article>
+        /*return <article className='vacancy vacancy--card'>
             <h2 className='vacancy__title'><a href=''>{name}</a></h2>
             <p className='vacancy__company'>{employer.name}</p>
             <strong className='vacancy__salary'>{salary.from + ' ' + salary.currency}</strong>
@@ -18,7 +22,7 @@ class VacancyCard extends Component {
             <p className='vacancy__desc'>{description}</p>
             {key_skills.map((item, index) =><span key={index} className='vacancy__tag vacancy__tag--gray'>{item.name + ' '}</span>)}
             <time date-time='25 01 2019'>{published_at}</time>
-        </article>
+        </article>*/
 
     }
 

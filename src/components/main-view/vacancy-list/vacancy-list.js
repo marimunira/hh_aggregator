@@ -19,8 +19,10 @@ class VacancyList extends Component {
         this.setState({ activePage: pageNumber });
     }
     render() {
+        console.log(this.props.data);
+        if (this.props.data)
         return <div>
-            {this.props.data.map((item) => <VacancyCard key={item.id} data={item} />)}
+            {this.props.data.items.map((item) => <VacancyCard key={item.id} data={item} />)}
             <Pagination
                 activePage={this.state.activePage}
                 itemsCountPerPage={COUNT_PER_PAGE}
@@ -29,6 +31,7 @@ class VacancyList extends Component {
                 onChange={this.handlePageChange}
       />
             </div>
+            else return <div>Нет результатов</div>
     }
 
 }
