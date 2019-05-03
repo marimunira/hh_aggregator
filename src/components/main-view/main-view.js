@@ -11,14 +11,15 @@ import { getVacancies } from '../../services/services';
 class MainView extends Component {
     constructor() {
         super();
-        this.state = { query: '', area: null, skills: null, experience: null, data: null, page: 0 };
+        this.state = { keyWords: '', area: null, skills: null, experience: null, data: null, page: 0 };
         this.setQuery = this.setQuery.bind(this);
         this.setFilters = this.setFilters.bind(this);
+        this.setPage = this.setPage.bind(this);
     }
     setQuery(value) {
         this.setState({
-            query: value,
-            city: null,
+            keyWords: value,
+            area: null,
             skills: null,
             experience: null,
             data: this.state.data,
@@ -29,7 +30,7 @@ class MainView extends Component {
     setFilters(data) {
         var { area, skills, experience } = data;
         this.setState({
-            query: this.state.query,
+            keyWords: this.state.keyWords,
             area: area,
             skills: skills,
             experience: experience,
@@ -39,14 +40,29 @@ class MainView extends Component {
     }
 
 
+    setPage(p) {
+        console.log('set page')
+        if (p > 0) {
+            this.setState({
+                keyWords: this.state.keyWords,
+                area: this.state.area,
+                skills: this.state.skills,
+                experience: this.state.experience,
+                data: this.state.data,
+                page: p-1
+            })   
+        }
+    }
+
     componentDidUpdate(_, prevState) {
         var p = (prevState.page !== this.state.page) ? this.state.page : 0;
-        if (prevState.query != this.state.query
+        if (prevState.keyWords != this.state.keyWords
             || prevState.skills != this.state.skills
             || prevState.area != this.state.area
-            || prevState.experience != this.state.experience) {
+            || prevState.experience != this.state.experience
+            || prevState.page != this.state.page) {
             var options = {
-                keyWords: this.state.query,
+                keyWords: this.state.keyWords,
                 filters: {
                     area: this.state.area,
                     skills: this.state.skills,
@@ -67,10 +83,11 @@ class MainView extends Component {
         }
     }
     render() {
+        console.log(this.state);
         return <div>
             <SearchForm data={JOBS} setQuery={this.setQuery} />
             <FilterForm setFilters={this.setFilters} />
-            <VacancyList data={this.state.data} />
+            <VacancyList setPage={this.setPage} data={this.state.data} />
         </div>
     }
 }
