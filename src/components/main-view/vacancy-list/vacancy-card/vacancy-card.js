@@ -11,7 +11,7 @@ class VacancyCard extends Component {
     render() {
         var { id, description, key_skills, salary, name, published_at, employer } = this.props.data;
 
-        return <div className='vacancy__wraper'>
+        return <div className='vacancy__wrapper'>
             <article className='vacancy'>
                 <h2 className='vacancy__title'><Link to={'/' + id}>{name}</Link></h2>
                 <time date-time='25 01 2019'>{published_at}</time>
