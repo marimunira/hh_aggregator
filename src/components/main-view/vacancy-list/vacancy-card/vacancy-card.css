@@ -1,6 +1,10 @@
-.vacancy--card {
-    border: 2px solid var(--gray-lighter);
-    margin: 10px;
+.vacancy__wraper {
+    margin: 20px auto;
+}
+.vacancy {
+    border: 1px solid var(--gray-lighter);
+    border-radius: 3px;
+    padding: 20px;   
 }
 
 .vacancy__title a {

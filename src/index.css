@@ -22,7 +22,7 @@ a:hover, a:focus {
   color: var(--color-light-accent);
 }
 
-h1 {
+h1, h2 {
   margin: 0;
 }
 
