@@ -31,6 +31,11 @@ class VacancyList extends Component {
                 totalItemsCount={this.props.data.found}
                 pageRangeDisplayed={PAGE_RANGE_DISPLAYED}
                 onChange={this.handlePageChange}
+                innerClass='vacancy-list__pagination'
+                itemClass='vacancy-list__pagination-item'
+                linkClass='vacancy-list__pagination-link'
+                activeClass='vacancy-list__pagination-item--active'
+                disabledClass='vacancy-list__pagination-item--disabled'
       />
             </div>
             else return <div>Нет результатов</div>

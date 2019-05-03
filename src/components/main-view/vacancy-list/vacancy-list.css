@@ -1,0 +1,34 @@
+.vacancy-list__pagination {
+    list-style-type: none;
+    display: flex;
+}
+.vacancy-list__pagination-item {
+    /*display: inline-block;*/
+    border: 1px solid var(--gray-darken);
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+.vacancy-list__pagination-item:hover {
+    background-color: var(--color-accent);
+    cursor: pointer;
+}
+.vacancy-list__pagination-link {
+    color: var(--black); 
+    text-decoration: none;
+    margin: 20px;
+}
+
+a.vacancy-list__pagination-link:hover {
+    color: var(--black);
+}
+.vacancy-list__pagination-item--active {
+    background-color: var(--color-accent);
+}
+.vacancy-list__pagination-item--disabled, .vacancy-list__pagination-item--disabled:hover {
+    background-color: var(--gray-lighter);
+    color: var(--gray-dark);
+    cursor: not-allowed;
+}
