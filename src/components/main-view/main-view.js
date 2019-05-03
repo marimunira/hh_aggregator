@@ -49,8 +49,8 @@ class MainView extends Component {
                 skills: this.state.skills,
                 experience: this.state.experience,
                 data: this.state.data,
-                page: p-1
-            })   
+                page: p - 1
+            })
         }
     }
 
@@ -86,8 +86,12 @@ class MainView extends Component {
         console.log(this.state);
         return <div className='main-content'>
             <SearchForm data={JOBS} setQuery={this.setQuery} />
-            <FilterForm setFilters={this.setFilters} />
-            <VacancyList setPage={this.setPage} data={this.state.data} />
+            <div className='filter-form-wrapper'>
+                <FilterForm setFilters={this.setFilters} />
+            </div>
+            <div className='vacancy-list-wrapper'>
+                <VacancyList setPage={this.setPage} data={this.state.data} />
+            </div>
         </div>
     }
 }

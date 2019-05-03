@@ -1,3 +1,6 @@
 .main-content {
     padding: 20px 30px;
 }
+.filter-form-wrapper, .vacancy-list-wrapper {
+    margin-top: 20px;
+}
