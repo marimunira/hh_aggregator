@@ -1,8 +1,11 @@
 .filter-form__item {
     margin-top: 10px;
+
 }
 div.filter-form__buttons {
     margin-top: 20px;
+    display: flex;
+    flex-wrap: nowrap;
 }
 button.filter-form__button--m {
     margin-right: 10px;
