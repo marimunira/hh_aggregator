@@ -3,30 +3,53 @@ import { Link } from 'react-router-dom';
 
 import "./vacancy-card.css"
 
+var options = { month: 'long', day: 'numeric' };
 
 class VacancyCard extends Component {
     constructor(props) {
         super(props);
     }
-    render() {
-        var { id, description, key_skills, salary, name, published_at, employer } = this.props.data;
 
-        return <div className='vacancy__wrapper'>
-            <article className='vacancy'>
-                <h2 className='vacancy__title'><Link to={'/' + id}>{name}</Link></h2>
-                <time date-time='25 01 2019'>{published_at}</time>
+    getSalaryStr = (from, to, cur) => {
+        var res = '';
+        if (from)
+            res += 'от ' + from;
+        else if (to)
+            res += 'до ' + from;
+        else if (to && from)
+            res += ' - ' + to;
+        res += ' ' + cur;
+        return res;
+    }
+    render() {
+        var requirement = '', responsibility = '', addressName = '',
+            salaryFrom = '', salaryTo = '', salaryCurrency = '';
+        if (this.props.data.snippet)
+            var { requirement, responsibility } = this.props.data.snippet;
+        if (this.props.data.address)
+            addressName = this.props.data.address.name;
+        if (this.props.data.salary)
+            var { from: salaryFrom, to: salaryTo, currency: salaryCurrency } = this.props.data.salary;
+        var { id,
+            name,
+            published_at,
+            employer: { name: employerName = '' } } = this.props.data;
+
+        var date = (new Date(published_at).toLocaleDateString("ru", options));
+
+        return <div className='vacancy-card__wrapper'>
+            <article className='vacancy-card'>
+                <header>
+                    <h2 className='vacancy-card__title vacancy-card__title--black'><Link to={'/' + id}>{name}</Link></h2>
+                    <div className='vacancy-card__salary'>{this.getSalaryStr(salaryFrom, salaryTo, salaryCurrency)}</div>
+                </header>
+                <small className='vacancy-card__company'>{employerName}</small>
+                <address className='vacancy-card__address'>{addressName}</address>
+                <p className='vacancy-card__requirement'>{requirement}</p>
+                <p className='vacancy-card__responsibility'>{responsibility}</p>
+                <time className='vacancy-card__date' dateTime={date}>{date}</time>
             </article>
         </div>
-        /*return <article className='vacancy vacancy--card'>
-            <h2 className='vacancy__title'><a href=''>{name}</a></h2>
-            <p className='vacancy__company'>{employer.name}</p>
-            <strong className='vacancy__salary'>{salary.from + ' ' + salary.currency}</strong>
-            <img alt='company' src={employer.logo_urls["90"]} width='100px' height='100px'></img>
-            <p className='vacancy__desc'>{description}</p>
-            {key_skills.map((item, index) =><span key={index} className='vacancy__tag vacancy__tag--gray'>{item.name + ' '}</span>)}
-            <time date-time='25 01 2019'>{published_at}</time>
-        </article>*/
-
     }
 
 }

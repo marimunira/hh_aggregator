@@ -26,7 +26,7 @@ h1, h2 {
   margin: 0;
 }
 h2 {
-  font-size: var(--font-size-h4)
+  font-size: var(--font-size-h3)
 }
 button {
   background-color: var(--gray-lightest);
