@@ -13,10 +13,6 @@ import { checkVacancyById } from './services/services';
 import './App.css';
 import './variables.css';
 
-import VACANCIES from './other/lorem';
-import JOBS from './other/lorem_jobs';
-
-
 class App extends Component {
 
   render() {
@@ -26,7 +22,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={MainView} />
 
-          <PrivateRoute exact validator={checkVacancyById} path='/:id' component={Vacancy} />} />
+          <PrivateRoute exact validator={checkVacancyById} path='/:id' component={Vacancy} />
 
           <Route path="*" component={ErrorPage} />
         </Switch>
