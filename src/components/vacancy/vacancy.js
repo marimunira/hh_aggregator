@@ -16,7 +16,7 @@ class Vacancy extends Component {
         if (this.state.data) {
             var { id, description, key_skills, salary, name, published_at, employer } = this.state.data;
             return <article className='vacancy-page'>
-                <h2 className='vacancy-page__title'><a href=''>{name}</a></h2>
+                <h2 className='vacancy-page__title'>{name}</h2>
                 <p className='vacancy-page__company'>{employer.name}</p>
                 <img alt='company' src={employer.logo_urls["90"]} width='100px' height='100px'></img>
                 <p className='vacancy-page__desc'>{description}</p>

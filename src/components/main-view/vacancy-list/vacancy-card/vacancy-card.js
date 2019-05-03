@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import "./vacancy-card.css"
 
@@ -11,7 +12,7 @@ class VacancyCard extends Component {
         var {id, description, key_skills, salary, name, published_at, employer} = this.props.data;
 
         return <article className='vacancy vacancy--card'>
-        <h2 className='vacancy__title'><a href=''>{name}</a></h2>
+        <h2 className='vacancy__title'><Link to={'/'+ id}>{name}</Link></h2>
         <time date-time='25 01 2019'>{published_at}</time>
     </article>
         /*return <article className='vacancy vacancy--card'>
