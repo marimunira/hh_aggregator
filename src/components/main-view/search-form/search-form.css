@@ -1,0 +1,18 @@
+.search-form {
+    display: flex;
+   align-content: stretch;
+}
+.search-form__input {
+    height: 20px;
+}
+
+.search-form > div {
+   flex-grow: 1; 
+}
+.search_form__wrapper {
+    margin-right: 15px;
+    
+}
+.search_form__wrapper > input{
+    width: 100%;
+}

@@ -5,7 +5,7 @@ import FilterForm from './filter-form/filter-form';
 import VacancyList from './vacancy-list/vacancy-list';
 
 import JOBS from '../../other/lorem_jobs';
-
+import './main-view.css';
 import { getVacancies } from '../../services/services';
 
 class MainView extends Component {
@@ -84,7 +84,7 @@ class MainView extends Component {
     }
     render() {
         console.log(this.state);
-        return <div>
+        return <div className='main-content'>
             <SearchForm data={JOBS} setQuery={this.setQuery} />
             <FilterForm setFilters={this.setFilters} />
             <VacancyList setPage={this.setPage} data={this.state.data} />

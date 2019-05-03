@@ -11,7 +11,7 @@ class SearchForm extends Component {
     }
 
     render() {
-        return <form className="query-form">
+        return <form className="search-form">
             <Autocomplete
                 getItemValue={(item) => item}
                 items={this.props.data}
@@ -21,7 +21,10 @@ class SearchForm extends Component {
                         {item}
                     </div>
                 }
-                renderInput={(props) => <input id="search" className="search-input" {...props} />}
+                renderInput={(props) => 
+                        <div className="search_form__wrapper">
+                            <input id="search" className="search-form__input" {...props} />
+                        </div>}
                 value={this.state.value}
                 onChange={(e) => this.setState({ value: e.target.value })}
                 onSelect={(val) => this.setState({ value: val })} //TODO Add request after 'Enter'*/
