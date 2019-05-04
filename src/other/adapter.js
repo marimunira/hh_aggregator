@@ -2,7 +2,7 @@ import nullsafe from 'nullsafe';
 
 const options = { month: 'long', day: 'numeric' };
 
-export const getVacancyFields =  (data) => {
+export const getVacancyFields = (data) => {
     var { id,
         name,
         published_at,
@@ -28,14 +28,14 @@ export const getVacancyFields =  (data) => {
     var contactPhones = zip.get('contacts').get('phones').value || [];
     var archived = zip.get('archived').value;
 
-    return { 
+    return {
         id,
         name,
         published_at,
         date,
         addressName,
         area,
-        salaryFrom, 
+        salaryFrom,
         salaryTo,
         salaryCurrency,
         employerName,
@@ -50,5 +50,47 @@ export const getVacancyFields =  (data) => {
         contactEmail,
         contactPhones,
         archived
-        }
+    }
+}
+
+export const getSalaryStr = (from, to, cur) => {
+    var res = '';
+    if (from)
+        res += 'от ' + from;
+    else if (to)
+        res += 'до ' + from;
+    else if (to && from)
+        res += ' - ' + to;
+    res += ' ' + cur;
+    return res;
+}
+
+export const getAbstractFields = (data) => {
+    var { id,
+        name,
+        published_at,
+        } = data;
+
+    var date = (new Date(published_at).toLocaleDateString("ru", options));
+    const zip = nullsafe(data);
+    var employerName = zip.get('employer').get('name').value || '';
+    var requirement = zip.get('snippet').get('requirement').value || '';
+    var responsibility = zip.get('snippet').get('responsibility').value || '';
+    var addressName = zip.get('address').get('name').value || '';
+    var salaryFrom = zip.get('salary').get('from').value || '';
+    var salaryTo = zip.get('salary').get('to').value || '';
+    var salaryCurrency = zip.get('salary').get('currency').value || '';
+    return {
+        id,
+        name,
+        date,
+        employerName,
+        requirement,
+        responsibility,
+        addressName,
+        salaryFrom,
+        salaryTo,
+        salaryCurrency
+    }
+    
 }
