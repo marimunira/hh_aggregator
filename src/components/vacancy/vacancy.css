@@ -1,0 +1,10 @@
+.vacancy-page {
+    padding: 20px 40px;
+}
+.vacancy-page__title {
+    font-size: var( --font-size-h2);
+}
+.vacancy-page__salary {
+    font-size: var( --font-size-h3);
+    font-weight: 700;
+}

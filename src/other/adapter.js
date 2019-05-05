@@ -26,6 +26,7 @@ export const getVacancyFields = (data) => {
     var contactName = zip.get('contacts').get('name').value || '';
     var contactEmail = zip.get('contacts').get('email').value || '';
     var contactPhones = zip.get('contacts').get('phones').value || [];
+    contactPhones = contactPhones.length > 0 ? contactPhones.map(item => item.number) : [];
     var archived = zip.get('archived').value;
 
     return {
@@ -61,7 +62,7 @@ export const getSalaryStr = (from, to, cur) => {
         res += 'до ' + from;
     else if (to && from)
         res += ' - ' + to;
-    res += ' ' + cur;
+    res += ' ' + cur.replace('RUR', 'руб.');
     return res;
 }
 
@@ -76,6 +77,7 @@ export const getAbstractFields = (data) => {
     var employerName = zip.get('employer').get('name').value || '';
     var requirement = zip.get('snippet').get('requirement').value || '';
     var responsibility = zip.get('snippet').get('responsibility').value || '';
+    var area = zip.get('area').get('name').value || '';
     var addressName = zip.get('address').get('name').value || '';
     var salaryFrom = zip.get('salary').get('from').value || '';
     var salaryTo = zip.get('salary').get('to').value || '';
@@ -88,6 +90,7 @@ export const getAbstractFields = (data) => {
         requirement,
         responsibility,
         addressName,
+        area,
         salaryFrom,
         salaryTo,
         salaryCurrency
