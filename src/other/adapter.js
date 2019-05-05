@@ -57,7 +57,7 @@ export const getVacancyFields = (data) => {
 export const getSalaryStr = (from, to, cur) => {
     var res = '';
     if (from && to)
-        res = to + ' - ' + from;
+        res =  from + ' - ' + to;
     else if (from)
         res = 'от ' + from;
     else if (to)
