@@ -11,8 +11,8 @@ export const getVacancyFields = (data) => {
     const zip = nullsafe(data);
     var addressName = zip.get('address').get('name').value || '';
     var area = zip.get('area').get('name').value || '';
-    var salaryFrom = zip.get('salary').get('from').value || '';
-    var salaryTo = zip.get('salary').get('to').value || '';
+    var salaryFrom = formatNumber(zip.get('salary').get('from').value) || '';
+    var salaryTo = formatNumber(zip.get('salary').get('to').value) || '';
     var salaryCurrency = zip.get('salary').get('currency').value || '';
     var employerName = zip.get('employer').get('name').value || '';
     var branded_description = zip.get('branded_description').value || '';
@@ -56,14 +56,19 @@ export const getVacancyFields = (data) => {
 
 export const getSalaryStr = (from, to, cur) => {
     var res = '';
-    if (from)
-        res += 'от ' + from;
+    if (from && to)
+        res = to + ' - ' + from;
+    else if (from)
+        res = 'от ' + from;
     else if (to)
-        res += 'до ' + from;
-    else if (to && from)
-        res += ' - ' + to;
+        res = 'до ' + to;
     res += ' ' + cur.replace('RUR', 'руб.');
     return res;
+}
+
+function formatNumber(x) {
+    if (x)
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 }
 
 export const getAbstractFields = (data) => {
@@ -79,8 +84,8 @@ export const getAbstractFields = (data) => {
     var responsibility = zip.get('snippet').get('responsibility').value || '';
     var area = zip.get('area').get('name').value || '';
     var addressName = zip.get('address').get('name').value || '';
-    var salaryFrom = zip.get('salary').get('from').value || '';
-    var salaryTo = zip.get('salary').get('to').value || '';
+    var salaryFrom = formatNumber(zip.get('salary').get('from').value) || '';
+    var salaryTo = formatNumber(zip.get('salary').get('to').value) || '';
     var salaryCurrency = zip.get('salary').get('currency').value || '';
     return {
         id,
