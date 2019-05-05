@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import parse from 'html-react-parser';
 import { Link } from 'react-router-dom';
 import { getAbstractFields, getSalaryStr } from '../../../../other/adapter';
 
@@ -31,8 +32,8 @@ class VacancyCard extends Component {
                 </header>
                 <small className='vacancy-card__company'>{employerName}</small>
                 <address className='vacancy-card__address'>{addressName}</address>
-                <p className='vacancy-card__requirement'>{requirement}</p>
-                <p className='vacancy-card__responsibility'>{responsibility}</p>
+                <p className='vacancy-card__requirement'>{parse(requirement)}</p>
+                <p className='vacancy-card__responsibility'>{parse(responsibility)}</p>
                 <time className='vacancy-card__date' dateTime={date}>{date}</time>
             </article>
         </div>
