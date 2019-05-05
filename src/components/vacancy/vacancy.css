@@ -1,10 +1,44 @@
 .vacancy-page {
     padding: 20px 40px;
 }
+.vacancy-page__header, .vacancy-page__conditions, 
+.vacancy-page__contacts,
+.vacancy-page__description, .vacancy-page__keyskills {
+    margin-bottom: 30px;
+}
+.vacancy-page__title, .vacancy-page__salary {
+    margin-bottom: 10px;
+}
 .vacancy-page__title {
     font-size: var( --font-size-h2);
+}
+.vacancy-page__archive {
+    font-style: italic;
 }
 .vacancy-page__salary {
     font-size: var( --font-size-h3);
     font-weight: 700;
+}
+.vacancy-page__label {
+    font-weight: 700;
+}
+div.vacancy-page__keyskills-inner {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.vacancy-page__skillitem {
+    padding: 7px;
+    border: 1px solid var(--gray-darker);
+    margin: 10px;
+}
+.vacancy-page__date {
+    font-style: italic;
+    text-align: right;
+}
+.vacancy-page__phone--nolink > a {
+    text-decoration: none;
+    color: var(--black);
+    cursor: text;
 }
