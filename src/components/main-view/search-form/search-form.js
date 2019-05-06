@@ -12,26 +12,15 @@ class SearchForm extends Component {
 
     render() {
         return <form className="search-form">
-            <Autocomplete
-                getItemValue={(item) => item}
-                items={this.props.data}
-                shouldItemRender={(item, value) => item.toLowerCase().startsWith(value.toLowerCase())}
-                renderItem={(item, isHighlighted) =>
-                    <div style={{ background: isHighlighted ? 'var(--color-invert)' : 'white', cursor: 'pointer' }}>
-                        {item}
-                    </div>
-                }
-                renderInput={(props) => 
-                        <div className="search_form__wrapper">
-                            <input id="search" className="search-form__input" {...props} placeholder='Что ищем?'/>
-                        </div>}
-                value={this.state.value}
-                onChange={(e) => this.setState({ value: e.target.value })}
-                onSelect={(val) => this.setState({ value: val })} //TODO Add request after 'Enter'*/
-            />
-
-            <button className="query-form__submit" type="button" onClick={()=>
-                 this.props.setQuery(this.state.value)}>Искать</button>
+            <div className="search_form__wrapper">
+                <input id="search" type='text' className="search-form__input" placeholder='Что ищем?'
+                    onChange={(e) => this.setState({ value: e.target.value })}
+                    onSubmit={(e) => this.setState({ value: e.target.value })} />
+            </div>
+            <button className="query-form__submit" type="submit" onClick={(e) => {
+                this.props.setQuery(this.state.value);
+                e.preventDefault();
+            }}>Искать</button>
 
         </form>
 
